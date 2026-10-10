@@ -1,0 +1,15 @@
+target/
+dbt_packages/
+logs/
+**pycache**/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+profiles.yml
+.env
+.vscode/
+.DS_Store
+Thumbs.db
