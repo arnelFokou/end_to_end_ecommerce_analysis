@@ -1,0 +1,18 @@
+# Sources.yml sert a referencer les tables deja presentes dans 
+# le data warehouse sur lesquelles tu voudrais appliquer des
+# transformations et aussi indiquer a dbt leur emplacement.
+
+version: 2
+sources:
+  - name : olist
+    schema: raw
+    tables:
+      - name: customers
+      - name: geolocation
+      - name: order_items
+      - name: order_payments
+      - name: order_reviews
+      - name: orders
+      - name: products
+      - name: sellers
+      - name: product_category_name_translation
