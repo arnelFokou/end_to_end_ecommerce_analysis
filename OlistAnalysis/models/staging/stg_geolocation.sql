@@ -18,11 +18,22 @@ Transformations:
 - Rename geolocation_state → state
 ------------------------------------------------------------
 */
-
-SELECT DISTINCT
+with cte_location as (
+ SELECT 
     geolocation_zip_code_prefix AS zip_code,
     geolocation_lat AS latitude,
     geolocation_lng AS longitude,
-    geolocation_city AS city,
-    geolocation_state AS state
+    trim(geolocation_city) AS city,
+    geolocation_state AS state,
+    ROW_NUMBER() OVER (
+             PARTITION BY
+                 geolocation_zip_code_prefix,
+                 geolocation_lat,
+                 geolocation_lng
+             ORDER BY geolocation_zip_code_prefix
+         ) AS rn
 FROM {{source('olist', 'geolocation')}}
+)
+
+select * from cte_location
+where rn = 1
