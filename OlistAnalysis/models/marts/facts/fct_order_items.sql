@@ -51,7 +51,7 @@ FROM {{ ref('stg_order_items') }} oi
 JOIN {{ ref('stg_orders') }} o
     ON o.order_id = oi.order_id
 
-JOIN {{ ref('dim_customers') }} dc
+JOIN {{ ref('stg_customers') }} dc
     ON o.customer_id = dc.customer_id
 
 JOIN {{ ref('dim_date') }} dd

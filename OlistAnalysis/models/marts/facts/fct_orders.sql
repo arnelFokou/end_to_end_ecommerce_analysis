@@ -54,7 +54,7 @@ select
 
 from {{ref ('stg_orders') }} o
 
-join {{ref ('dim_customers') }} dc
+join {{ref ('stg_customers') }} dc
     on dc.customer_id = o.customer_id
 
 join {{ref ('dim_date')}} dd

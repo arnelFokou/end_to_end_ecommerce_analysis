@@ -35,9 +35,6 @@ models:
     staging:
       +schema: staging
       +materialized: view
-    dimensions:
-      +schema: marts
-      +materialized: table
-    facts:
+    marts:
       +schema: marts
       +materialized: table

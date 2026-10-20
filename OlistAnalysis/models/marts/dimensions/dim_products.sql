@@ -21,16 +21,7 @@
 
 SELECT
     p.product_id,
-    p.product_category_name,
-    t.product_category_name_english,
-    p.product_name_length,
-    p.product_description_length,
-    p.product_photos_qty,
-    p.product_weight,
-    p.product_length,
-    p.product_height,
-    p.product_width
-
+    t.product_category_name_english
 FROM {{ ref('stg_products') }} p
 
 LEFT JOIN {{ ref('stg_product_category_translation') }} t

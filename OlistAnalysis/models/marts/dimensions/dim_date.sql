@@ -3,23 +3,28 @@
 --
 -- Purpose:
 -- Creates a reusable calendar dimension to support time-based
--- analysis across the analytics models and Power BI dashboards.
+-- analysis across the data warehouse and Power BI dashboards.
 --
 -- Grain:
 -- One row per calendar date.
 --
 -- Source:
--- Generated using Snowflake's GENERATOR function.
+-- Calendar dates are generated using a recursive CTE in SQL.
+--
+-- Transformations:
+-- - Generate consecutive dates from 2015-01-01 to 2026-01-03.
+-- - Extract calendar attributes: year, quarter, month, week, and day.
+-- - Add the month name and day name for reporting purposes.
+-- - Identify weekends using the day of the week.
+--
+-- Output:
+-- One row per date with calendar attributes for filtering,
+-- grouping, and analyzing business metrics over time.
 --
 -- Notes:
--- - Covers the date range from 2015-01-01.
--- - Includes commonly used calendar attributes such as year,
---   quarter, month, week, day, and weekend flag.
+-- - Weekend identification assumes Sunday = 0 and Saturday = 6
+--   for EXTRACT(DOW FROM full_date).
 -- ------------------------------------------------------------------
-
-
--- Dimension calendrier
--- Grain : une ligne par date
 
 WITH RECURSIVE calendar(full_date) AS (
 
