@@ -1,0 +1,13 @@
+OlistAnalysis:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      host: xxxxxxxxxxxxxxxxxxxx.eu-west-3.redshift-serverless.amazonaws.com
+      port: 5439
+      user: Redshift_Username
+      password: Redshift_UserPassword
+      dbname: Redshift_DBname
+      schema: Redshift_DBshema
+      threads: 4
+      connect_timeout: 10
